@@ -1,0 +1,45 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NDU4Mzg0NjF9.ZWDdC0VSpDWudN9Uh6Dq8TttAu-KZuHwXMzXkvn_8PA
+
+### Users create (signup)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "email": "tabish@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "email": "tabish@test.com",
+  "password": "password"
+}
+
+### user_cryptos create
+POST http://localhost:3000/user_cryptos
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "crypto_id": 3,
+  "quantity": 10
+}
+
+### user_cryptos index
+get http://localhost:3000/user_cryptos
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+### user_cryptos index
+patch http://localhost:3000/user_cryptos/6
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "quantity": 5
+}
