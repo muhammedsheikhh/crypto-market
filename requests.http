@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NDU4Mzg0NjF9.ZWDdC0VSpDWudN9Uh6Dq8TttAu-KZuHwXMzXkvn_8PA
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NDY0NDczNTV9.RiHgR6j0lKQ_nj1SGklTm26HOj65yqIdLwUmTSc8pGY
 
 ### Users create (signup)
 POST http://localhost:3000/users
@@ -26,8 +26,8 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-  "crypto_id": 3,
-  "quantity": 10
+  "crypto_id": 1,
+  "quantity": 2
 }
 
 ### user_cryptos index
@@ -43,3 +43,9 @@ Authorization: Bearer {{jwt}}
 {
   "quantity": 5
 }
+
+### user_cryptos destroy
+delete http://localhost:3000/user_cryptos/6
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+

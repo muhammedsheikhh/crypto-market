@@ -30,9 +30,8 @@ class UserCryptosController < ApplicationController
   end
 
   def destroy
-    usercrypto = current_user.user_crypto.find_by(id: params[:id])
-    usercrypto.status = "removed"
-    usercrypto.save
+    usercrypto = current_user.user_cryptos.find_by(id: params[:id])
+    usercrypto.destroy
     render json: { message: "sold" }
   end
 end
