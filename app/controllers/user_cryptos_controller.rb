@@ -1,14 +1,19 @@
 class UserCryptosController < ApplicationController
   def index
     #pp current_user
-    usercrypto = current_user.User_cryptos.where(status: "buy")
+    usercrypto = current_user.user_cryptos.where(status: "buy")
     render json: usercrypto
   end
 
   def create
+    crypto = Crypto.find_or_create_by(code: params[:symbol])
+    crypto.name = params[:name] || crypto.name
+    crypto.price = params[:price] || crypto.price
+    crypto.save
+
     usercrypto = UserCrypto.new(
       user_id: current_user.id,
-      crypto_id: params[:crypto_id],
+      crypto_id: crypto.id,
       quantity: params[:quantity],
       status: "buy",
     )
