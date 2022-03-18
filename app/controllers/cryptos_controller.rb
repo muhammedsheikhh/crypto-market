@@ -2,7 +2,7 @@ class CryptosController < ApplicationController
   def index
     response = HTTP.get("https://api2.binance.com/api/v3/ticker/24hr")
     crypto_data = JSON.parse(response.body)
-    crypto = crypto_data
+    crypto = crypto_data.select { |item| item["symbol"].end_with? "USDT" }
     render json: crypto
   end
 
