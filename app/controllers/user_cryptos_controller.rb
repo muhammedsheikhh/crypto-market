@@ -15,6 +15,7 @@ class UserCryptosController < ApplicationController
       user_id: current_user.id,
       crypto_id: crypto.id,
       quantity: params[:quantity],
+      bprice: params[:price],
       status: "buy",
     )
     if usercrypto.save
